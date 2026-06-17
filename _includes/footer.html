@@ -1,0 +1,19 @@
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-wordmark">{{ site.howitworks.wordmark | default: site.title }}</div>
+      <p class="footer-tagline">{{ site.howitworks.tagline }}</p>
+    </div>
+    <div class="footer-right">
+      <div class="footer-domain">{{ site.url | remove: 'https://' | remove: 'http://' }}</div>
+      <div class="footer-copyright">{{ site.howitworks.copyright }}</div>
+      {% if site.howitworks.footer_links %}
+        <div class="footer-links">
+          {% for link in site.howitworks.footer_links %}
+            <a href="{{ link.url }}" class="footer-link">{{ link.label }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</footer>
