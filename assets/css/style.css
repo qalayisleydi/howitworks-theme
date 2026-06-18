@@ -317,6 +317,7 @@ img {
 
 .article-inner {
   max-width: var(--article-max-width);
+  margin: 0 auto;
   padding: 0 64px;
 }
 
@@ -352,6 +353,10 @@ img {
   margin-top: 48px;
   margin-bottom: 18px;
   letter-spacing: -0.01em;
+}
+
+.article-content h2:first-child {
+  margin-top: 0;
 }
 
 .article-content p {
