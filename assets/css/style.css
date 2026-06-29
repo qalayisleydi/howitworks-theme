@@ -697,23 +697,123 @@ code {
   .nav-links {
     gap: 20px;
   }
+
+  .article-content {
+    overflow-wrap: break-word;
+  }
 }
 
 @media (max-width: 600px) {
+  /* Typography */
   .article-header h1 {
     font-size: 36px;
+    margin-bottom: 20px;
   }
 
   .article-content h2 {
     font-size: 24px;
+    margin-top: 36px;
+    margin-bottom: 14px;
   }
 
+  .article-content p,
+  .article-content li {
+    font-size: 18px;
+  }
+
+  .callout p,
+  .step-text {
+    font-size: 17px;
+  }
+
+  pre code {
+    font-size: 13px;
+  }
+
+  /* Code blocks */
+  pre {
+    padding: 16px;
+    border-radius: 8px;
+  }
+
+  .article-content code {
+    word-break: break-word;
+  }
+
+  /* Spacing */
+  .article-content figure {
+    margin: 20px 0 28px;
+  }
+
+  .article-meta {
+    gap: 8px 16px;
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+
+  .callout {
+    padding-left: 18px;
+    margin: 20px 0;
+  }
+
+  .step-item {
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+  }
+
+  .improve-link {
+    margin: 40px 0;
+  }
+
+  /* Nav breadcrumb */
+  .nav-breadcrumb .nav-wordmark {
+    font-size: 19px;
+  }
+
+  .nav-breadcrumb {
+    gap: 12px;
+  }
+
+  .breadcrumb-sep,
+  .breadcrumb-topic {
+    font-size: 11px;
+  }
+
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* TOC sidebar */
+  .toc-sidebar {
+    padding: 20px 24px;
+  }
+
+  .toc-nav {
+    gap: 12px;
+  }
+
+  .toc-link {
+    font-size: 15px;
+    padding-left: 12px;
+  }
+
+  /* Footer */
+  .footer-wordmark {
+    font-size: 24px;
+  }
+
+  .footer-tagline {
+    font-size: 15px;
+  }
+
+  .site-footer {
+    padding: 32px 24px;
+  }
+
+  /* Topic list */
   .topic-row {
     grid-template-columns: 1fr;
     gap: 8px;
-  }
-
-  .topic-num {
-    font-size: 12px;
   }
 }

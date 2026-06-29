@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "howitworks-theme"
-  spec.version       = "1.0.2"
+  spec.version       = "1.0.5"
   spec.authors       = ["qalayisleydi"]
   spec.summary       = "A minimal Jekyll theme for educational 'how it works' sites"
   spec.homepage      = "https://github.com/qalayisleydi/howitworks-theme"
