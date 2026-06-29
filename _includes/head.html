@@ -1,1 +1,49 @@
+{% assign desc = page.description | default: site.description %}
+
+{% if desc %}
+<meta name="description" content="{{ desc }}">
+{% endif %}
+
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+
+<!-- Open Graph -->
+<meta property="og:title" content="{{ page.title | default: site.title }}">
+{% if desc %}
+<meta property="og:description" content="{{ desc }}">
+{% endif %}
+<meta property="og:type" content="{% if page.layout == 'doc' %}article{% else %}website{% endif %}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:locale" content="kaa">
+<meta property="og:site_name" content="{{ site.title }}">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ page.title | default: site.title }}">
+{% if desc %}
+<meta name="twitter:description" content="{{ desc }}">
+{% endif %}
+
+{% if page.layout == "doc" %}
+<!-- JSON-LD: TechArticle -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": {{ page.title | jsonify }},
+  "inLanguage": "kaa",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ page.url | absolute_url }}"
+  }{% if desc %},
+  "description": {{ desc | jsonify }}{% endif %}{% if page.author %},
+  "author": {
+    "@type": "Person",
+    "name": {{ page.author | jsonify }}
+  }{% endif %}{% if page.date %},
+  "datePublished": "{{ page.date | date: '%Y-%m-%d' }}"{% endif %}{% if page.updated %},
+  "dateModified": "{{ page.updated }}"{% endif %}
+}
+</script>
+{% endif %}
+
 {{ site.howitworks.extra_head }}
