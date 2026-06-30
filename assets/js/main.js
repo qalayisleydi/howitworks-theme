@@ -62,15 +62,24 @@
      =========================================== */
   var siteNav = document.querySelector('.site-nav');
   var tocSidebar = document.querySelector('.toc-sidebar');
+  var siteFooter = document.querySelector('.site-footer');
   if (siteNav && tocSidebar) {
-    var updateSidebarTop = function () {
+    var updateSidebarPosition = function () {
       var navBottom = siteNav.getBoundingClientRect().bottom;
-      var top = Math.max(0, navBottom);
-      tocSidebar.style.top = top + 'px';
+      tocSidebar.style.top = Math.max(0, navBottom) + 'px';
+
+      if (siteFooter) {
+        var footerTop = siteFooter.getBoundingClientRect().top;
+        if (footerTop < window.innerHeight) {
+          tocSidebar.style.bottom = (window.innerHeight - footerTop) + 'px';
+        } else {
+          tocSidebar.style.bottom = '0px';
+        }
+      }
     };
-    updateSidebarTop();
-    window.addEventListener('scroll', updateSidebarTop);
-    window.addEventListener('resize', updateSidebarTop);
+    updateSidebarPosition();
+    window.addEventListener('scroll', updateSidebarPosition);
+    window.addEventListener('resize', updateSidebarPosition);
   }
 
   /* ===========================================
