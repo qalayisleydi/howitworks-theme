@@ -58,26 +58,39 @@
   }
 
   /* ===========================================
-     3. TOC Toggle
+     3. Fixed TOC sidebar positioning
+     =========================================== */
+  var siteNav = document.querySelector('.site-nav');
+  var tocSidebar = document.querySelector('.toc-sidebar');
+  if (siteNav && tocSidebar) {
+    var updateSidebarTop = function () {
+      var navBottom = siteNav.getBoundingClientRect().bottom;
+      var top = Math.max(0, navBottom);
+      tocSidebar.style.top = top + 'px';
+    };
+    updateSidebarTop();
+    window.addEventListener('scroll', updateSidebarTop);
+    window.addEventListener('resize', updateSidebarTop);
+  }
+
+  /* ===========================================
+     4. TOC Toggle (hide/show entire sidebar)
      =========================================== */
   var tocToggle = document.querySelector('.toc-toggle');
-  var tocHeader = document.querySelector('.toc-header');
-  var tocSidebar = document.querySelector('.toc-sidebar');
-  if (tocToggle && tocSidebar) {
+  if (tocToggle) {
     // Restore saved state
     if (localStorage.getItem('toc-collapsed') === 'true') {
-      tocSidebar.classList.add('toc-collapsed');
+      document.body.classList.add('toc-collapsed');
     }
 
-    // Click on toggle button or the whole header
-    tocHeader.addEventListener('click', function () {
-      tocSidebar.classList.toggle('toc-collapsed');
-      localStorage.setItem('toc-collapsed', tocSidebar.classList.contains('toc-collapsed'));
+    tocToggle.addEventListener('click', function () {
+      document.body.classList.toggle('toc-collapsed');
+      localStorage.setItem('toc-collapsed', document.body.classList.contains('toc-collapsed'));
     });
   }
 
   /* ===========================================
-     4. Theme Toggle
+     5. Theme Toggle
      =========================================== */
   var toggle = document.querySelector('.theme-toggle');
   if (toggle) {
