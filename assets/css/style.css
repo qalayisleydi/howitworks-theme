@@ -283,13 +283,46 @@ img {
   overflow-y: auto;
 }
 
+/* TOC header with toggle */
+.toc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
 .toc-label {
   font-family: var(--font-mono);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--color-toc-label);
-  margin-bottom: 20px;
+  margin-bottom: 0;
+}
+
+/* Toggle button */
+.toc-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: var(--color-toc-label);
+  display: flex;
+  align-items: center;
+}
+
+.toc-toggle-icon {
+  transition: transform 0.2s ease;
+}
+
+/* Collapsed state */
+.toc-sidebar.toc-collapsed .toc-nav {
+  display: none;
+}
+
+.toc-sidebar.toc-collapsed .toc-toggle-icon {
+  transform: rotate(-90deg);
 }
 
 .toc-nav {

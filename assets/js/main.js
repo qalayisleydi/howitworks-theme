@@ -58,7 +58,26 @@
   }
 
   /* ===========================================
-     3. Theme Toggle
+     3. TOC Toggle
+     =========================================== */
+  var tocToggle = document.querySelector('.toc-toggle');
+  var tocHeader = document.querySelector('.toc-header');
+  var tocSidebar = document.querySelector('.toc-sidebar');
+  if (tocToggle && tocSidebar) {
+    // Restore saved state
+    if (localStorage.getItem('toc-collapsed') === 'true') {
+      tocSidebar.classList.add('toc-collapsed');
+    }
+
+    // Click on toggle button or the whole header
+    tocHeader.addEventListener('click', function () {
+      tocSidebar.classList.toggle('toc-collapsed');
+      localStorage.setItem('toc-collapsed', tocSidebar.classList.contains('toc-collapsed'));
+    });
+  }
+
+  /* ===========================================
+     4. Theme Toggle
      =========================================== */
   var toggle = document.querySelector('.theme-toggle');
   if (toggle) {
